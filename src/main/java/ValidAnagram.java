@@ -1,0 +1,28 @@
+import java.util.Arrays;
+
+public class ValidAnagram {
+
+    public static void main(String[] args) {
+
+        String s = "anagram";
+        String t = "nagaram";
+
+        System.out.println(validAnagram(s, t));
+    }
+
+    private static boolean validAnagram(String s, String t) {
+       if (s.length() != t.length())
+           return false;
+       int[] frequency = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            frequency[s.charAt(i) - 'a']++;
+            frequency[t.charAt(i) - 'a']--;
+        }
+
+        for (int i = 0; i < frequency.length ; i++) {
+            if (frequency[i] != 0)
+                return false;
+        }
+        return true;
+    }
+}
